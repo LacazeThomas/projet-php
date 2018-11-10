@@ -23,7 +23,6 @@ if ($_SESSION["role"] == "prof") {
     }
     echo "Voici les avis des etudiants pour la matière ";
     $prof_ue = (int) filter_var($_SESSION["id"], FILTER_SANITIZE_NUMBER_INT);
-    $prof_ue = $prof_ue-1;
     switch ($prof_ue){
         case 1:
             echo "Mathématiques ";
@@ -44,7 +43,7 @@ if ($_SESSION["role"] == "prof") {
     echo "sont: </br>";
     
     foreach ($avis as $avi) {
-        switch ($avi[$prof_ue]){
+        switch ($avi[$prof_ue-1]){
             case 1:
                 echo "Très mécontent </br>";
                 break;
