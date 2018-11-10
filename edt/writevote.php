@@ -1,12 +1,19 @@
 <?php
 session_start();
 
+$tabue = array("Mathématiques","Anglais","Programmation","Algorithmique","Economie");
+$tabvotes = array();
+
+foreach ($tabue as $ue){
+	if (isset($_POST[$ue])){
+		array_push($tabvotes,$_POST[$ue]);
+	}
+}
 if ($_SESSION["role"] == "edt"){
-	$vote = array($_POST["ue1"],$_POST["ue2"],$_POST["ue3"],$_POST["ue4"],$_POST["ue5"]);
-
+	
 	$fp =  fopen("votes/vote-".$_SESSION["id"].".csv", "w");
-
-	fputcsv($fp, $vote, ",");
+	
+	fputcsv($fp, $tabvotes, ",");
 
 	fclose($fp);
 	}
