@@ -11,6 +11,7 @@ foreach ($lines as $key => $value)
 
 
 if(isset($_REQUEST['submit'])){
+    
     if($_POST['id'] && $_POST['mdp']){
         foreach($id as $val){
             if($_POST['id'] == $val[0] and $_POST['mdp'] == $val[1]){
