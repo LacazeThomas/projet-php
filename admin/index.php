@@ -2,7 +2,7 @@
 session_start();
 require 'pdf/mc_table.php';
 ?>
-<link rel="stylesheet" href="../assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/style.css" />
 <?php
 
 function ecart_type($arr)
@@ -118,7 +118,7 @@ if ($_SESSION["role"] == "admin") {
     <td>Moyenne</td>";
     array_push($pdf_parse, "Moyenne");
     foreach ($matieres_notes as $matiere) {
-        echo "<td>" . array_sum($matiere) / count($matiere) . "</td>";
+        echo "<td>" . round(array_sum($matiere) / count($matiere),3) . "</td>";
         array_push($pdf_parse, array_sum($matiere) / count($matiere));
     }
     echo "</tr>";
@@ -130,7 +130,7 @@ if ($_SESSION["role"] == "admin") {
     <td>Ecartype</td>";
 
     foreach ($matieres_notes as $matiere) {
-        echo "<td>" . ecart_type($matiere) . "</td>";
+        echo "<td>" . round(ecart_type($matiere),3) . "</td>";
         array_push($pdf_parse, ecart_type($matiere));
     }
     array_push($pdf, $pdf_parse);
@@ -156,10 +156,10 @@ if ($_SESSION["role"] == "admin") {
 </ul>
 
 <form action="../logout.php" method="post">
- <p><input type="submit" name="submit" value="Déconnexion"></p>
+ <p><button type="submit" name="submit" value="Déconnexion">Déconnexion</button></p>
 </form>
 
 
 <form action="" method="post">
- <p><input type="submit" name="submitPDF" value="PDF"></p>
+ <p><button type="submit" name="submitPDF" value="PDF">PDF</button></p>
 </form>
