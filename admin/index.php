@@ -1,6 +1,8 @@
 <?php
 session_start();
 require 'pdf/mc_table.php';
+require('../header.php')
+
 ?>
 <link rel="stylesheet" href="../assets/css/style.css" />
 <?php

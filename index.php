@@ -1,12 +1,16 @@
 <html>
 <head>
-<link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-Vous êtes:</br>
+<?php
+require('header.php')
+?> 
 
-<a href="admin/login.php">Administrateur</a>
-<a href="edt/login.php">Étudiant</a>
-<a href="prof/login.php">Professeur</a>
+
+<body>
+<br/>
+Vous êtes:</br>
+<button type="button" class="btn btn-outline-secondary btn-lg"><a href="admin/login.php">Administrateur</a></button>
+<button type="button" class="btn btn-outline-secondary btn-lg"><a href="edt/login.php">Édudiant</a></button>
+<button type="button" class="btn btn-outline-secondary btn-lg"><a href="prof/login.php">Professeur</a></button>
+
 </body>
 </html>

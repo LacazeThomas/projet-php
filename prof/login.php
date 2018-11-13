@@ -1,4 +1,8 @@
 <?php
+require('../header.php')
+?>
+
+<?php
 session_start();
 
 $id = array();

@@ -1,4 +1,8 @@
 <?php
+require('../header.php')
+?>
+
+<?php
 session_start();
 
 $tabue = array("Mathématiques","Anglais","Programmation","Algorithmique","Economie");

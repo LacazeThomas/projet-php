@@ -1,4 +1,7 @@
 <?php
+require('../header.php')
+?>
+<?php
 session_start();
 
 $id = array();
@@ -31,6 +34,9 @@ if(isset($_REQUEST['submit'])){
         unset($_SESSION["error"]);
     }
 ?>
+<br/>
+<h3>Connexion Etudiant</h3>
+<br/>
 <form action="" method="POST">
 <input type="text" placeholder="Identifiant" name="id" required>
 <input type="password" placeholder="Mot de passe" name="mdp" required>

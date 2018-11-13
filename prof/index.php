@@ -1,4 +1,8 @@
 <?php
+require('../header.php')
+?>
+
+<?php
 session_start();
 if ($_SESSION["role"] == "prof") {
     echo "Bonjour ",$_SESSION["id"],"</br>";
