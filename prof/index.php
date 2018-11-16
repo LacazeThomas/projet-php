@@ -1,7 +1,7 @@
 <?php
-session_start();
+require_once '../panel_header.php';
+
 if ($_SESSION["role"] == "prof") {
-    echo "Bonjour ",$_SESSION["id"],"</br>";
 
     $votes = array();
     if ($handle = opendir('../edt/votes')) {
@@ -21,7 +21,7 @@ if ($_SESSION["role"] == "prof") {
             $avis[] = str_getcsv($line);
         }
     }
-    echo "Voici les avis des etudiants pour la matière ";
+    echo "<h2>Voici les avis des etudiants pour la matière ";
     $prof_ue = (int) filter_var($_SESSION["id"], FILTER_SANITIZE_NUMBER_INT);
     switch ($prof_ue){
         case 1:
@@ -40,7 +40,7 @@ if ($_SESSION["role"] == "prof") {
             echo "Economie ";
             break;
     }
-    echo "sont: </br>";
+    echo "sont: </h2>";
     
     foreach ($avis as $avi) {
         switch ($avi[$prof_ue-1]){
@@ -63,11 +63,11 @@ if ($_SESSION["role"] == "prof") {
     }
 
 } else {
-    header('Location: login.php');
+    header('Location: ../');
 }
 ?>
 
 
-<form action="../logout.php" method="post">
- <p><input type="submit" name="submit" value="Déconnexion"></p>
-</form>
+<?php
+require_once '../panel_footer.php';
+?>
