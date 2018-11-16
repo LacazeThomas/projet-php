@@ -1,8 +1,7 @@
 <?php
-session_start();
+require_once '../panel_header.php';
 require 'pdf/mc_table.php';
 ?>
-<link rel="stylesheet" href="../assets/css/style.css" />
 <?php
 
 function ecart_type($arr)
@@ -24,7 +23,6 @@ function ecart_type($arr)
 }
 
 if ($_SESSION["role"] == "admin") {
-    echo "Bonjour ", $_SESSION["id"], "</br>";
 
     $votes = array();
     if ($handle = opendir('../edt/votes')) {
@@ -45,9 +43,10 @@ if ($_SESSION["role"] == "admin") {
         }
     }
     $pdf = array();
-    echo "Voici les avis des etudiants pour toutes matières:</br>";
+    echo "<h1>Voici les avis des étudiants pour toutes matières:</h1>";
 
-    echo "<table>
+    echo "<table class=\"table\">
+    <thead>
     <tr>
         <th></th>
         <th>Mathématiques</th>
@@ -56,6 +55,7 @@ if ($_SESSION["role"] == "admin") {
         <th>Algorithmique</th>
         <th>Economie</th>
     </tr>
+    </thead>
     ";
     array_push($pdf, array("", "Maths", "Anglais", "Programmation", "Algorithmique", "Economie"));
     $maths = array();
@@ -63,6 +63,7 @@ if ($_SESSION["role"] == "admin") {
     $prog = array();
     $algo = array();
     $eco = array();
+    echo "<tbody>";
     foreach ($avis as $edt) {
         $pdf_parse = array();
         echo "<tr><td>Anonyme</td>";
@@ -109,17 +110,17 @@ if ($_SESSION["role"] == "admin") {
             echo "</td>";
         }
         array_push($pdf, $pdf_parse);
-        echo "</tr>";
+        echo "<tbody></tr>";
     }
     $pdf_parse = array();
     $matieres_notes = array($maths, $anglais, $prog, $algo, $eco);
     echo "
     <tr>
-    <td>Moyenne</td>";
+    <td><strong>Moyenne</strong></td>";
     array_push($pdf_parse, "Moyenne");
     foreach ($matieres_notes as $matiere) {
-        echo "<td>" . round(array_sum($matiere) / count($matiere),3) . "</td>";
-        array_push($pdf_parse, array_sum($matiere) / count($matiere));
+        echo "<td>" . round(array_sum($matiere) / count($matiere),2) . "</td>";
+        array_push($pdf_parse, round(array_sum($matiere) / count($matiere),2));
     }
     echo "</tr>";
     array_push($pdf, $pdf_parse);
@@ -127,11 +128,11 @@ if ($_SESSION["role"] == "admin") {
     array_push($pdf_parse, "Ecartype");
     echo "
     <tr>
-    <td>Ecartype</td>";
+    <td><strong>Ecartype</strong></td>";
 
     foreach ($matieres_notes as $matiere) {
-        echo "<td>" . round(ecart_type($matiere),3) . "</td>";
-        array_push($pdf_parse, ecart_type($matiere));
+        echo "<td>" . round(ecart_type($matiere),2) . "</td>";
+        array_push($pdf_parse, round(ecart_type($matiere),2));
     }
     array_push($pdf, $pdf_parse);
     echo "</tr>
@@ -143,23 +144,22 @@ if ($_SESSION["role"] == "admin") {
     }
 
 } else {
-    header('Location: login.php');
+    header('Location: ../index.php');
 }
 ?>
 <p>Le barême est le suivant :</p>
-<ul>
 <li>1 : Très mécontent</li>
 <li>2 : Mécontent</li>
 <li>3 : Moyen</li>
 <li>4 : Satisfait</li>
 <li>5 : Très satisfait</li>
-</ul>
-
-<form action="../logout.php" method="post">
- <p><button type="submit" name="submit" value="Déconnexion">Déconnexion</button></p>
-</form>
 
 
 <form action="" method="post">
- <p><button type="submit" name="submitPDF" value="PDF">PDF</button></p>
+ <p><button type="submit" class="btn btn-primary" name="submitPDF" value="PDF">Générer le PDF</button></p>
 </form>
+
+
+<?php
+require_once '../panel_footer.php';
+?>
