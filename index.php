@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require_once 'panel_header.php';
 
@@ -51,3 +52,21 @@ verif("id-student.csv", "edt");
 <?php
 require_once 'panel_footer.php';
 ?>
+=======
+<html>
+<head>
+<?php
+require('header.php')
+?> 
+
+
+<body>
+<br/>
+Vous êtes:</br>
+<button type="button" class="btn btn-outline-secondary btn-lg"><a href="admin/login.php">Administrateur</a></button>
+<button type="button" class="btn btn-outline-secondary btn-lg"><a href="edt/login.php">Édudiant</a></button>
+<button type="button" class="btn btn-outline-secondary btn-lg"><a href="prof/login.php">Professeur</a></button>
+
+</body>
+</html>
+>>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa

@@ -1,6 +1,14 @@
 <?php
+<<<<<<< HEAD
 require_once '../panel_header.php';
 
+=======
+require('../header.php')
+?>
+
+<?php
+session_start();
+>>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
 if ($_SESSION["role"] == "prof") {
 
     $votes = array();

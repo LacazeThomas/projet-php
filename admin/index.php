@@ -1,6 +1,8 @@
 <?php
 require_once '../panel_header.php';
 require 'pdf/mc_table.php';
+require('../header.php')
+
 ?>
 <?php
 

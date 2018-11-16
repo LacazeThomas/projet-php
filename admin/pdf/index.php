@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('mc_table.php');
+require('../../header.php');
+
 
 $pdf=new PDF_MC_Table();
 $pdf->AddPage();

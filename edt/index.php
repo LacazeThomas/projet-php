@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+<html>
+<head>
+<?php
+require('../header.php')
+?>
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+>>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
 <?php
 require_once '../panel_header.php';
 
@@ -14,9 +25,15 @@ if ($_SESSION["role"] == "edt"){
 				if($num == 5){
 					echo "<h3> Vous avez déjà voté :</h3>\n";
 					$row++;
+<<<<<<< HEAD
 					echo "<table class='table'><tbody>";
 					for ($c=0; $c < $num; $c++) {
 						echo "<tr><td><strong>" . $tabue[$c] . "</strong></td><td>" . $tabnote[$note[$c]-1] . "</td></tr>";
+=======
+					echo "<table class='table'>";
+					for ($c=0; $c < $num; $c++) {
+						echo "<tr><th scope='row'>". $tabue[$c] . "</th><td>" . $tabnote[$c] . "</td></tr>";
+>>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
 					}
 					echo "<tbody></table>";
 				}
@@ -27,10 +44,14 @@ if ($_SESSION["role"] == "edt"){
 		print('
 		<h2 class="title">Formulaire de vote</h2>
 		<form method="POST" action="writevote.php">
+<<<<<<< HEAD
 			<table class="table"><tbody>');
+=======
+			<table class="table">');
+>>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
 			foreach ($tabue as $ue){
 				
-				echo "<tr><td>" . $ue . "</td>" ;
+				echo "<tr><th scope='row'>" . $ue . "</th>" ;
 				echo "<td><select name=" . $ue . " class = 'chosen-value'>";
 				print('
 					<option value="1">Très mécontent</option>
@@ -42,7 +63,11 @@ if ($_SESSION["role"] == "edt"){
 				</tr>');
 			}
 		print('
+<<<<<<< HEAD
 				</tbody><tr><td colspan="2"><center><button class="btn btn-primary" type="submit">Valider</button></center></tr></td>
+=======
+				<tr><td colspan="2"><center><button class="btn btn-outline-success" type="submit">Valider</button></center></tr></td>
+>>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
 			</table>
 		</form>');
 	}
@@ -52,8 +77,17 @@ if ($_SESSION["role"] == "edt"){
     header('Location: ../index.php');  
 }
 ?>
+<<<<<<< HEAD
 
 
 <?php
 require_once '../panel_footer.php';
 ?>
+=======
+</body>
+</html>
+<br/>
+<form action="../logout.php" method="post">
+ <p><button type="submit" class="btn btn-outline-secondary btn-lg" name="submit" value="Déconnexion">Déconnexion</button></p>
+</form>
+>>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
