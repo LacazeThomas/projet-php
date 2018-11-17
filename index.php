@@ -21,7 +21,7 @@ function verif($file, $role){
                     $_SESSION["role"] = $role;
                     header('Location: '.$role.'/index.php');  
                 }else{
-                    $_SESSION["error"] = "Oups, votre identifiant ou mot de passe est incorrect";
+                    $_SESSION["error"] = "Oups, votre identifiant ou mot de passe est incorrect.";
                 }
             }
         }
@@ -34,14 +34,16 @@ verif("id-student.csv", "edt");
 
 ?>
 
+<h1>Veuillez vous connecter</h1>
+
+<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 <?php
     if(isset($_SESSION["error"])){
-        echo $_SESSION["error"];
-        unset($_SESSION["error"]);
+        echo "<div class=\"alert alert-danger\" role=\"alert\">
+        ".$_SESSION["error"]."
+        </div>";
     }
 ?>
-<h1>Veuillez vous connecter</h1>
-<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input name="id" type="text" class="form-control" placeholder="Identifiant" required autofocus>
             <input type="password" name="mdp"  class="form-control" placeholder="Mot de passe" required>
             <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Connexion</button>

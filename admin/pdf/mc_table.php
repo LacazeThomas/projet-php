@@ -38,7 +38,7 @@ function Row($data)
 		//Dessine le cadre
 		$this->Rect($x,$y,$w,$h);
 		//Imprime le texte
-		$this->MultiCell($w,5,$data[$i],0,$a);
+		$this->MultiCell($w,5,utf8_decode($data[$i]),0,$a);
 		//Repositionne � droite
 		$this->SetXY($x+$w,$y);
 	}
