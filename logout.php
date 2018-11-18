@@ -1,5 +1,5 @@
 <?php
-require('header.php')
+require('panel_header.php')
 ?>
 
 <?php

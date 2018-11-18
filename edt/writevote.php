@@ -1,50 +1,48 @@
-<<<<<<< HEAD
 <?php
 session_start();
 
 $tabue = array("Mathématiques","Anglais","Programmation","Algorithmique","Economie");
-$tabvotes = array();
 
-foreach ($tabue as $ue){
-	if (isset($_POST[$ue])){
-		array_push($tabvotes,$_POST[$ue]);
+function verif_post($tabue){
+	for($i = 0; $i < 5; ++$i){
+		if (isset($_POST[$tabue[$i]])){
+			$_POST[$tabue[$i]] = intval($_POST[$tabue[$i]]); // Transformation en int
+			echo $_POST[$tabue[$i]]."<br/>";
+			if ($_POST[$tabue[$i]]<1 or $_POST[$tabue[$i]]>5){
+				$_SESSION["error"] = "Les valeurs entrées sont incorrectes";
+			}
+		}else{
+			$_SESSION["error"] = "Pas de valeurs entrées";
+		}
 	}
 }
-if ($_SESSION["role"] == "edt"){
-	
-	$fp =  fopen("votes/vote-".$_SESSION["id"].".csv", "w");
-	
-	fputcsv($fp, $tabvotes, ",");
+if(isset($_SESSION['id'])){
+	if ($_SESSION['role'] == "edt"){
+		verif_post($tabue);
+		if (!isset($_SESSION["error"])){
+			$tabvotes = array();
 
-	fclose($fp);
-	}
+			foreach ($tabue as $ue){
+				if (isset($_POST[$ue])){
+					array_push($tabvotes,$_POST[$ue]);
+				}
+			}
+			if ($_SESSION["role"] == "edt"){
+				
+				$fp =  fopen("votes/vote-".$_SESSION["id"].".csv", "w");
+				
+				fputcsv($fp, $tabvotes, ",");
 
-header('Location: index.php');
-=======
-<?php
-require('../header.php')
-?>
-
-<?php
-session_start();
-
-$tabue = array("Mathématiques","Anglais","Programmation","Algorithmique","Economie");
-$tabvotes = array();
-
-foreach ($tabue as $ue){
-	if (isset($_POST[$ue])){
-		array_push($tabvotes,$_POST[$ue]);
+				fclose($fp);
+			}
+		}else{
+			$error = $_SESSION["error"];
+			unset ($_SESSION["error"]);
+			header("Location: index.php?error=".$error);
+			exit(1);
+		}
 	}
 }
-if ($_SESSION["role"] == "edt"){
-	
-	$fp =  fopen("votes/vote-".$_SESSION["id"].".csv", "w");
-	
-	fputcsv($fp, $tabvotes, ",");
-
-	fclose($fp);
-	}
-
 header('Location: index.php');
->>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
+
 ?>

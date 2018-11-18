@@ -1,5 +1,15 @@
-<<<<<<< HEAD
 <?php
+// **PREVENTING SESSION HIJACKING**
+// Prevents javascript XSS attacks aimed to steal the session ID
+ini_set('session.cookie_httponly', 1);
+
+// **PREVENTING SESSION FIXATION**
+// Session ID cannot be passed through URLs
+ini_set('session.use_only_cookies', 1);
+
+// Uses a secure connection (HTTPS) if possible
+ini_set('session.cookie_secure', 1);
+
 require_once 'panel_header.php';
 
 if (isset($_SESSION["role"])) {
@@ -52,21 +62,3 @@ verif("id-student.csv", "edt");
 <?php
 require_once 'panel_footer.php';
 ?>
-=======
-<html>
-<head>
-<?php
-require('header.php')
-?> 
-
-
-<body>
-<br/>
-Vous êtes:</br>
-<button type="button" class="btn btn-outline-secondary btn-lg"><a href="admin/login.php">Administrateur</a></button>
-<button type="button" class="btn btn-outline-secondary btn-lg"><a href="edt/login.php">Édudiant</a></button>
-<button type="button" class="btn btn-outline-secondary btn-lg"><a href="prof/login.php">Professeur</a></button>
-
-</body>
-</html>
->>>>>>> a04b2ed1a6bbe3f1758bf74ddd7ad251c4d9e6aa
