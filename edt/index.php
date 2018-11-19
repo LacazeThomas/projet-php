@@ -30,7 +30,7 @@ if ($_SESSION["role"] == "edt"){
 			<table class="table"><tbody>');
 			foreach ($tabue as $ue){
 				
-				echo "<tr><td>" . $ue . "</td>" ;
+				echo "<tr><th scope='row'>" . $ue . "</th>" ;
 				echo "<td><select name=" . $ue . " class = 'chosen-value'>";
 				print('
 					<option value="1">Très mécontent</option>
@@ -46,14 +46,15 @@ if ($_SESSION["role"] == "edt"){
 			</table>
 		</form>');
 	}
-
+	if (isset($_SESSION["error"])){
+		echo "<p style='color:Tomato;font-weight: bold;'>---------------- ".htmlspecialchars($_SESSION["error"])." ----------------</p>";
+		unset ($_SESSION["error"]);
+	}
 	
 }else{
     header('Location: ../index.php');  
 }
 ?>
-
-
 <?php
 require_once '../panel_footer.php';
 ?>

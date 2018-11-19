@@ -42,6 +42,7 @@ verif("id-student.csv", "edt");
         echo "<div class=\"alert alert-danger\" role=\"alert\">
         ".$_SESSION["error"]."
         </div>";
+        unset ($_SESSION["error"]);
     }
 ?>
             <input name="id" type="text" class="form-control" placeholder="Identifiant" required autofocus>

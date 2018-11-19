@@ -107,6 +107,13 @@ if ($_SESSION["role"] == "admin") {
     }
 
     echo "</tbody></table></div>";
+    
+    if(count($votes) > 1){
+        echo "<h3>Il y a ".count($votes)." étudiants qui ont voté </h3>";
+    }else{
+        echo "<h3>Il y a 1 étudiant qui a voté </h3>";
+    }
+    
 
     if (isset($_REQUEST['submitPDF'])) {
         $_SESSION["table"] = $pdf;
