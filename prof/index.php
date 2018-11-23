@@ -21,11 +21,11 @@ if ($_SESSION["role"] == "prof") {
             $avis[] = str_getcsv($line);
         }
     }
-    echo "<h2>Voici les avis des etudiants pour la matière ";
+    echo "<h2>Voici les avis des étudiants pour votre matière (";
     $prof_ue = (int) filter_var($_SESSION["id"], FILTER_SANITIZE_NUMBER_INT);
     switch ($prof_ue) {
         case 1:
-            echo "Mathématiques ";
+            echo "Mathématiques) ";
             break;
         case 2:
             echo "Anglais ";
@@ -40,14 +40,19 @@ if ($_SESSION["role"] == "prof") {
             echo "Economie ";
             break;
     }
-    echo "sont: </h2>";
+    echo "</h2>";
 
     $notation = array("", "Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait");
-    echo "<div class=\"table-responsive-sm\"><table class=\"table\"><thead><tr>";
+    $temp = $notation;
+    array_shift($temp);
+    $_SESSION["graph_matiere"] = $temp;
+    $graph_count = array();
+    echo "<div class=\"table-responsive-sm\"><table class=\"table-bordered table table-striped\"><thead><tr>";
 
     foreach ($notation as $avi) {
         echo "<th>" . $avi . "</th>";
     }
+    echo"<th>Total</th>";
 
     echo "</tr></thead>";
     echo "<tbody>";
@@ -61,17 +66,22 @@ if ($_SESSION["role"] == "prof") {
                 }
             }
         echo "<td>" . $count . "</td>";
-    }
+        array_push($graph_count, $count);
+        }
+    echo "<td>".$nombre_votant."</td>";
+    $_SESSION["graph_count"] = $graph_count;
     echo "</tbody></table></div>";
-    if($nombre_votant > 1){
-        echo "<h3>Il y a ".$nombre_votant." étudiants qui ont voté </h3>";
-    }else{
-        echo "<h3>Il y a 1 étudiant qui a voté </h3>";
-    }
+
+    
 } else {
     header('Location: ../');
 }
 ?>
+
+
+<div class="d-flex">
+  <?php include('graph/index.php'); ?>
+</div>
 
 
 <?php
