@@ -8,7 +8,6 @@ session_start();
 <html lang="fr">
 
 <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
 
     <meta charset="utf-8">
@@ -16,7 +15,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-    <title>Projet PHP</title>
+    <title>Projet PHP<?php if (isset($_SESSION["role"])) {echo " - ".ucfirst($_SESSION["role"]);}?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +27,7 @@ session_start();
 
 <body class="text-center">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary blue">
-        <a class="navbar-brand" href="index.php">Projet PHP</a>
+        <a class="navbar-brand" href="index.php">Projet PHP<?php if (isset($_SESSION["role"])) {echo " - ".ucfirst($_SESSION["role"]);}?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
