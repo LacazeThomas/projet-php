@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if ($_SESSION["role"] != "prof" or !isset($_SESSION["graph_count"]) or  !isset($_SESSION["graph_matiere"])){
+    header('Location: ../');
+}
 ?>
 
 <script type='text/javascript'>
@@ -14,7 +18,7 @@ echo "var javascript_count_array = " . $js_count_array . ";\n";
 echo "var javascript_notation_array = " . $js_notation_array . ";\n";
 ?>
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script src="graph/graph.js"></script>
 <canvas id="myChart"></canvas>
 <script>
 var ctx = document.getElementById("myChart").getContext('2d');
