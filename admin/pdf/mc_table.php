@@ -7,12 +7,13 @@ var $widths;
 var $aligns;
 
 function Header (){
-			$this->SetFont("Arial","b",15);
-			$this->Image('uvsq.jpg',10,10,35);
+			$this->SetFont("Arial","b",10);
+			$this->Image('uvsq.jpg',162,5,35);
+			$this->Cell(2,10,date("d/m/Y"),0,0);
 			$this->Cell(100,10,'',0,1); 
 			$this->Cell(100,10,'',0,1); 
-			$this->Cell(185,10,'Tableau recapitulatif l\'avis des '.utf8_decode(é).'tudiants',1,1,'C');
-			$this->Cell(100,10,'Mise '.utf8_decode(à).' jour le '.date("d/m/Y"),0,1); 
+			$this->Cell(185,10,'Tableau recapitulatif de l\'avis des '.utf8_decode(é).'tudiants',1,1,'C');
+			$this->Cell(100,10,'',0,1); 
 
 		}
 		
@@ -20,6 +21,7 @@ function Footer (){
 			$this->SetFont("Arial","b",10);
 			$this->SetY(270);
 			$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}','B',0,'C');
+			
 			
 		}
 function SetWidths($w)

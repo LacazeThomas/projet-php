@@ -9,7 +9,7 @@ session_start();
 
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://projet.thomaslacaze.fr/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,10 +19,10 @@ session_start();
     <title>Projet PHP</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://projet.thomaslacaze.fr/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://projet.thomaslacaze.fr/assets/css/sticky-footer-navbar.css" rel="stylesheet">
-    <link href="https://projet.thomaslacaze.fr/assets/css/signin.css" rel="stylesheet">
-    <link href="https://projet.thomaslacaze.fr/assets/css/custom.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/assets/css/signin.css" rel="stylesheet">
+    <link href="/assets/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -39,21 +39,11 @@ session_start();
 
                     <?php
 if (isset($_SESSION["role"])) {
-    echo "<a class=\"nav-link dropdown-toggle";
-    echo "\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                        " . htmlspecialchars($_SESSION["role"]) . "</a>
-                    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
-                        <a class=\"dropdown-item\" href=\"../logout.php\">Deconnexion</a>
-                    </div>";
-} else {
-    echo "<li class=\"nav-item\">
-                    <a href=\"index.php?1\" class=\"nav-link\">Connexion</a>
-                    </li>";
+                        echo"
+                        <li class=\"nav-item\">
+                        <a href=\"../logout.php\" class=\"btn btn-outline-light my-2 my-sm-0\" role=\"button\" aria-disabled=\"true\">Déconnexion</a>
+                        </li>";
 }
 ?>
-                </li>
-                <li class="nav-item">
-                <a href="contact.php" class="nav-link">Contactez-nous</a>
-                </li>
         </div>
     </nav>

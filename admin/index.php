@@ -2,7 +2,7 @@
 require_once '../panel_header.php';
 require 'pdf/mc_table.php';
 ?>
-<h1>Voici les avis des étudiants pour toutes matières:</h1>
+<h1>Voici la répartion des votes:</h1>
 <?php
 
 function ecart_type($arr)
@@ -52,8 +52,7 @@ if ($_SESSION["role"] == "admin") {
 
     }
 
-    echo "<div class=\"table-responsive-sm\"><table class=\"table\"><thead><tr>";
-
+    echo "<div class=\"table-responsive-sm \"><table class=\"table-bordered table table-striped\"><thead class=\"thead-light\"><tr>";
     foreach ($notation as $avi) {
         echo "<th>" . $avi . "</th>";
     }
