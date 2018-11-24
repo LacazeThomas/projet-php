@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 if ($_SESSION["role"] != "prof" or !isset($_SESSION["graph_count"]) or  !isset($_SESSION["graph_matiere"])){
     header('Location: ../');
@@ -18,11 +18,19 @@ echo "var javascript_count_array = " . $js_count_array . ";\n";
 echo "var javascript_notation_array = " . $js_notation_array . ";\n";
 ?>
 </script>
+
 <script src="graph/graph.js"></script>
-<canvas id="myChart"></canvas>
+
+<div class="chartjs-size-monitor-shrink" style="height:20vh;width:40vw">
+
+<canvas id="myChart"  ></canvas>
+</div>
+
+
 <script>
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
+	
     type: 'bar',
     data: {
         labels: javascript_notation_array,
@@ -45,11 +53,14 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
+
         }]
     },
     options: {
+		
     legend: {
         display: false
+
     },
     tooltips: {
         callbacks: {

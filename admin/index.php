@@ -2,7 +2,9 @@
 require_once '../panel_header.php';
 require 'pdf/mc_table.php';
 ?>
+<br/>
 <h1>Voici la répartion des votes:</h1>
+<br/>
 <?php
 
 function ecart_type($arr)
@@ -130,6 +132,8 @@ if ($_SESSION["role"] == "admin") {
 <li>3 : Moyen</li>
 <li>4 : Satisfait</li>
 <li>5 : Très satisfait</li>
+<br/>
+
 
 <form action="" method="post">
  <p><button type="submit" class="btn btn-primary" name="submitPDF" value="PDF">Générer le PDF</button></p>

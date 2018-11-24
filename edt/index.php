@@ -20,9 +20,11 @@ if ($_SESSION["role"] == "edt") {
             while (($note = fgetcsv($handle, 1000, ",")) !== false) {
                 $num = count($note);
                 if ($num == 5) {
+					echo "<br/>";
                     echo "<h3> Vous avez déjà voté :</h3>\n";
                     $row++;
-                    echo "<table class='table'><tbody>";
+					echo "<br/>";
+                    echo "<div class=\"table-responsive-sm \"><table class=\"table-bordered table table-striped\"><thead class=\"thead-light\"><tr><tbody>";
                     for ($c = 0; $c < $num; $c++) {
                         echo "<tr><td><strong>" . $tabue[$c] . "</strong></td><td>" . $tabnote[$note[$c] - 1] . "</td></tr>";
                     }
@@ -33,24 +35,26 @@ if ($_SESSION["role"] == "edt") {
         }
     } else {
         print('
+		<br/>
 		<h2 class="title">Formulaire de vote</h2>
 		<form method="POST" action="writevote.php">
-			<table class="table"><tbody>');
+		<br/>
+		<table class="table"><tbody>');
         foreach ($tabue as $ue) {
-
+			echo "<div class='btn-group'>";
             echo "<tr><th scope='row'>" . $ue . "</th>";
-            echo "<td><select name=" . $ue . " class = 'chosen-value'>";
-            print('
-					<option value="1">Très mécontent</option>
-					<option value="2">Mécontent</option>
-					<option value="3" selected>Moyen</option>
-					<option value="4">Satisfait</option>
-					<option value="5">Très satisfait</option>
-				</select></td>
-				</tr>');
+            echo "<td><select name=" . $ue . " class='btn btn-primary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+            print(' <div class="dropdown-menu">
+					<option class="dropdown-item" value="1">Très mécontent</option>
+					<option class="dropdown-item" value="2">Mécontent</option>
+					<option class="dropdown-item" value="3" selected>Moyen</option>
+					<option class="dropdown-item" value="4">Satisfait</option>
+					<option class="dropdown-item" value="5">Très satisfait</option>
+				</select></div></td>
+				</tr></div>');
         }
         print('
-				</tbody><tr><td colspan="2"><center><button class="btn btn-primary" type="submit">Valider</button></center></tr></td>
+				</tbody><tr><td colspan="2"><center><button class="btn btn-primary btn-lg" type="submit">Valider</button></center></tr></td>
 			</table>
 		</form>');
     }
