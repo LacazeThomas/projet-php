@@ -19,10 +19,10 @@ session_start();
 
     <!-- Bootstrap core CSS -->
 
-    <link href="https://php7.thomaslacaze.fr/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://php7.thomaslacaze.fr/assets/css/sticky-footer-navbar.css" rel="stylesheet">
-    <link href="https://php7.thomaslacaze.fr/assets/css/signin.css" rel="stylesheet">
-    <link href="https://php7.thomaslacaze.fr/assets/css/custom.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/assets/css/signin.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
 
 </head>
 

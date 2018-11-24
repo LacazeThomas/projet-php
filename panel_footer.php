@@ -1,7 +1,7 @@
 <footer class="footer">
 <div class="container">
 <span class="text-muted">Projet PHP 7/12/18 - Lacaze Thomas, Noé Bellefon, Steven Kerautret, Aurélien Brunet, Jibril Zioui, Benjamin Gogo</span>
-<img src="https://php7.thomaslacaze.fr/assets/img/uvsq.jpg" class="rounded float-right" style="width:110px;height:55px;" alt= "Logo de Velizy">
+<img src="/assets/img/uvsq.jpg" class="rounded float-right" style="width:110px;height:55px;" alt= "Logo de Velizy">
 </div>
 </footer>
 </html>
