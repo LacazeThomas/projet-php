@@ -21,26 +21,29 @@ if ($_SESSION["role"] == "prof") {
             $avis[] = str_getcsv($line);
         }
     }
+	echo "<br/>";
     echo "<h2>Voici les avis des étudiants pour votre matière (";
+	
     $prof_ue = (int) filter_var($_SESSION["id"], FILTER_SANITIZE_NUMBER_INT);
     switch ($prof_ue) {
         case 1:
             echo "Mathématiques) ";
             break;
         case 2:
-            echo "Anglais ";
+            echo "Anglais) ";
             break;
         case 3:
-            echo "Programmation ";
+            echo "Programmation) ";
             break;
         case 4:
-            echo "Algorithmique ";
+            echo "Algorithmique) ";
             break;
         case 5:
-            echo "Economie ";
+            echo "Economie) ";
             break;
     }
     echo "</h2>";
+	echo "<br/>";
 
     $notation = array("", "Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait");
     $temp = $notation;
@@ -76,6 +79,7 @@ if ($_SESSION["role"] == "prof") {
 } else {
     header('Location: ../');
 }
+echo "<br/>";
 ?>
 
 

@@ -12,7 +12,7 @@ function Header (){
 			$this->Cell(2,10,date("d/m/Y"),0,0);
 			$this->Cell(100,10,'',0,1); 
 			$this->Cell(100,10,'',0,1); 
-			$this->Cell(185,10,'Tableau recapitulatif de l\'avis des '.utf8_decode(é).'tudiants',1,1,'C');
+			$this->Cell(185,10,'Tableau recapitulatif de l\'avis des etudiants',1,1,'C');
 			$this->Cell(100,10,'',0,1); 
 
 		}
