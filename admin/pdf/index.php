@@ -10,9 +10,20 @@ $pdf->SetFont('Arial','',11);
 $pdf->SetWidths(array(23,23,23,23,23,23,23,23));
 
 //srand(microtime()*1000000);
-
+$compteur = 1;
 foreach($_SESSION["table"] as $row){
-    $pdf->Row($row);
+	
+	if ($compteur == 1)
+	{
+	$pdf->SetFillColor('144', '146', '150');
+	$pdf->Row2($row);
+	$compteur = $compteur + 1;
+	}
+	else
+	{
+	$pdf->Row($row);
+	$compteur = $compteur + 1;
+	}
 }
 
 $pdf->Output();
