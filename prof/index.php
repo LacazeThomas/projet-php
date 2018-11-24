@@ -84,7 +84,7 @@ echo "<br/>";
 
 
 <div class="d-flex">
-  <?php include('graph/index.php'); ?>
+  <?php include('../assets/graph/prof.php'); ?>
 </div>
 
 

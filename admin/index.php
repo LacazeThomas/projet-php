@@ -2,10 +2,19 @@
 require_once '../panel_header.php';
 require 'pdf/mc_table.php';
 ?>
-<br/>
-<h1>Voici la répartion des votes:</h1>
-<br/>
-<?php
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Tableau répartition des notes
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+      <?php
 
 function ecart_type($arr)
 {
@@ -126,18 +135,62 @@ if ($_SESSION["role"] == "admin") {
 }
 
 ?>
-<p>Le barême est le suivant :</p>
-<li>1 : Très mécontent</li>
-<li>2 : Mécontent</li>
-<li>3 : Moyen</li>
-<li>4 : Satisfait</li>
-<li>5 : Très satisfait</li>
-<br/>
-
-
 <form action="" method="post">
  <p><button type="submit" class="btn btn-primary" name="submitPDF" value="PDF">Générer le PDF</button></p>
 </form>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Graphique de l'ensemble des notes
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+      <?php
+$graph_count = array();
+for ($i = 0; $i < 5; $i++) {
+    $count = 0;
+    for ($y = 0; $y < count($votes); $y++) {
+        for ($p = 0; $p < count($matière); $p++) {
+            if ($avis[$y][$p] == $i + 1) {
+                $count++;
+            }
+
+        }
+    }
+    array_push($graph_count, $count);
+}
+$_SESSION["graph_count"] = $graph_count;
+$_SESSION["graph_matiere"] = array("Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait");
+
+?>
+      <div class="d-flex">
+  <?php include '../assets/graph/admin.php';?>
+</div><br/><br/><br/><br/><br/><br/>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <?php
 require_once '../panel_footer.php';

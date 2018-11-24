@@ -1,6 +1,4 @@
 <?php
-
-
 if ($_SESSION["role"] != "prof" or !isset($_SESSION["graph_count"]) or  !isset($_SESSION["graph_matiere"])){
     header('Location: ../');
 }
@@ -19,7 +17,7 @@ echo "var javascript_notation_array = " . $js_notation_array . ";\n";
 ?>
 </script>
 
-<script src="graph/graph.js"></script>
+<script src="/assets/graph/graph.js"></script>
 
 <div class="chartjs-size-monitor-shrink" style="height:20vh;width:40vw">
 
