@@ -34,7 +34,7 @@ verif("id-student.csv", "edt");
 
 ?>
 
-<h1>Veuillez vous connecter</h1>
+<h2>Bienvenue sur la platforme pour donner votre avis à propos de chaque UE</h2>
 
 <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 <?php

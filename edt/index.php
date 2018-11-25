@@ -21,14 +21,14 @@ if ($_SESSION["role"] == "edt") {
                 $num = count($note);
                 if ($num == 5) {
 					echo "<br/>";
-                    echo "<h3> Vous avez déjà voté :</h3>\n";
+                    echo "<h3> Merci du vote. Voici ce que vous nous avez soumis :</h3>\n";
                     $row++;
 					echo "<br/>";
                     echo "<div class=\"table-responsive-sm \"><table class=\"table-bordered table table-striped\"><thead class=\"thead-light\"><tr><tbody>";
                     for ($c = 0; $c < $num; $c++) {
                         echo "<tr><td><strong>" . $tabue[$c] . "</strong></td><td>" . $tabnote[$note[$c] - 1] . "</td></tr>";
                     }
-                    echo "<tbody></table>";
+                    echo "<tbody></table></div>";
                 }
             }
             fclose($handle);
@@ -63,5 +63,7 @@ if ($_SESSION["role"] == "edt") {
     header('Location: ../index.php');
 }
 ?>
+
+<p>Les votes sont annonymes, il est donc impossible aux professeurs ou administrateur de savoir qui à voté quoi.</p>
 <?php
 require_once '../panel_footer.php';

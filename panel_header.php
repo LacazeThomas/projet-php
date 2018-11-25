@@ -23,7 +23,7 @@ session_start();
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/sticky-footer-navbar.css" rel="stylesheet">
     <link href="/assets/css/signin.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="/assets/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -48,3 +48,4 @@ if (isset($_SESSION["role"])) {
 ?>
         </div>
     </nav>
+    <div class="container full">
