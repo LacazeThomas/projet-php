@@ -8,7 +8,7 @@ if (!isset($_SESSION["graph_count_line"]) or !isset($_SESSION["graph_matiere_lin
 
 
 <div class="col-md-12">
-        <canvas id="myChart_line_ec" style="height:20vh;width:35vw"></canvas>
+        <canvas id="myChart_line_ec"></canvas>
 </div>
 
 <script>
