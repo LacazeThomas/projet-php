@@ -48,4 +48,4 @@ if (isset($_SESSION["role"])) {
 ?>
         </div>
     </nav>
-    <div class="container full">
+    <div class="container">
