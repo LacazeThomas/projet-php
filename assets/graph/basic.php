@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION["role"] != "prof" or !isset($_SESSION["graph_count"]) or  !isset($_SESSION["graph_matiere"])){
+if (!isset($_SESSION["graph_count"]) or  !isset($_SESSION["graph_matiere"])){
     header('Location: ../');
 }
 ?>

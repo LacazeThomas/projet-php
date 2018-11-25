@@ -42,6 +42,8 @@ if ($_SESSION["role"] == "admin") {
     $eco = array();
     $votes = array();
     $avis = array();
+    $moyenne = array();
+    $ecart = array();
     if ($handle = opendir('../edt/votes')) {
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != ".." && preg_match('/^.*\.(csv)$/i', $entry)) {
@@ -110,20 +112,21 @@ if ($_SESSION["role"] == "admin") {
         }
         echo "<td>" . round(array_sum($ue) / count($ue), 2) . "</td>";
         array_push($pdf_parse, round(array_sum($ue) / count($ue), 2));
+        array_push($moyenne, round(array_sum($ue) / count($ue), 2));
         echo "<td>" . round(ecart_type($ue), 2) . "</td>";
+        array_push($ecart, round(ecart_type($ue), 2));
         array_push($pdf_parse, round(ecart_type($ue), 2));
         echo "</tr>";
         array_push($pdf, $pdf_parse);
     }
 
     echo "</tbody></table></div>";
-    
-    if(count($votes) > 1){
-        echo "<h3>Il y a ".count($votes)." étudiants qui ont voté </h3>";
-    }else{
+
+    if (count($votes) > 1) {
+        echo "<h3>Il y a " . count($votes) . " étudiants qui ont voté </h3>";
+    } else {
         echo "<h3>Il y a 1 étudiant qui a voté </h3>";
     }
-    
 
     if (isset($_REQUEST['submitPDF'])) {
         $_SESSION["table"] = $pdf;
@@ -145,7 +148,7 @@ if ($_SESSION["role"] == "admin") {
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Graphique de l'ensemble des notes
+        Graphique de l'ensemble des avis tout UE confondu
         </button>
       </h5>
     </div>
@@ -168,9 +171,12 @@ for ($i = 0; $i < 5; $i++) {
 $_SESSION["graph_count"] = $graph_count;
 $_SESSION["graph_matiere"] = array("Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait");
 
+$_SESSION["graph_matiere_line"] = $matière;
+$_SESSION["graph_count_line"] = $moyenne;
+$_SESSION["graph_ec_line"] = $ecart
 ?>
       <div class="d-flex">
-  <?php include '../assets/graph/admin.php';?>
+  <?php include '../assets/graph/basic.php';?>
 </div><br/><br/><br/><br/><br/><br/>
       </div>
     </div>
@@ -179,14 +185,21 @@ $_SESSION["graph_matiere"] = array("Très mécontent", "Mécontent", "Moyen", "S
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
+          Informations complémentaires
         </button>
       </h5>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+        <div class="row">
+            <div class="col-sm">
+            <?php include '../assets/graph/line.php';?><br/><br/><br/><br/><br/><br/>
+            </div>
+            <div class="col-sm">
+            <?php include '../assets/graph/line_ec.php';?><br/><br/><br/><br/><br/><br/>
+            </div>
+        </div>
+    </div>
     </div>
   </div>
 </div>
