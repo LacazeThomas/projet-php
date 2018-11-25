@@ -175,9 +175,7 @@ $_SESSION["graph_matiere_line"] = $matière;
 $_SESSION["graph_count_line"] = $moyenne;
 $_SESSION["graph_ec_line"] = $ecart
 ?>
-      <div class="d-flex">
-  <?php include '../assets/graph/basic.php';?>
-</div><br/><br/><br/><br/><br/><br/>
+        <?php include '../assets/graph/basic.php';?>
       </div>
     </div>
   </div>
@@ -193,10 +191,10 @@ $_SESSION["graph_ec_line"] = $ecart
       <div class="card-body">
         <div class="row">
             <div class="col-sm">
-            <?php include '../assets/graph/line.php';?><br/><br/><br/><br/><br/><br/>
+            <?php include '../assets/graph/line.php';?>
             </div>
             <div class="col-sm">
-            <?php include '../assets/graph/line_ec.php';?><br/><br/><br/><br/><br/><br/>
+            <?php include '../assets/graph/line_ec.php';?>
             </div>
         </div>
     </div>

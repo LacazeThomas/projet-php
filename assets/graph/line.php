@@ -26,11 +26,9 @@ echo "var javascript_graph_ec_line = " . $js_graph_ec_line . ";\n";
 
 <script src="/assets/graph/graph.js"></script>
 
-<div class="chartjs-size-monitor-shrink" style="height:20vh;width:35vw">
-
-<canvas id="myChart_line"  ></canvas>
+<div class="col-md-12">
+        <canvas id="myChart_line" style="height:20vh;width:35vw"></canvas>
 </div>
-
 
 <script>
 var ctx = document.getElementById("myChart_line").getContext('2d');

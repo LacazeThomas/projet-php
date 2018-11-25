@@ -19,9 +19,8 @@ echo "var javascript_notation_array = " . $js_notation_array . ";\n";
 
 <script src="/assets/graph/graph.js"></script>
 
-<div class="chartjs-size-monitor-shrink" style="height:20vh;width:40vw">
-
-<canvas id="myChart"  ></canvas>
+<div class="col-md-12">
+        <canvas id="myChart" style="height:20vh;width:40vw"></canvas>
 </div>
 
 

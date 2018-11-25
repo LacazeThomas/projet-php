@@ -6,11 +6,10 @@ if (!isset($_SESSION["graph_count_line"]) or !isset($_SESSION["graph_matiere_lin
 
 <script src="/assets/graph/graph.js"></script>
 
-<div class="chartjs-size-monitor-shrink" style="height:20vh;width:35vw">
 
-<canvas id="myChart_line_ec"  ></canvas>
+<div class="col-md-12">
+        <canvas id="myChart_line_ec" style="height:20vh;width:35vw"></canvas>
 </div>
-
 
 <script>
 var ctx = document.getElementById("myChart_line_ec").getContext('2d');
