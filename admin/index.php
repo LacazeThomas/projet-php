@@ -32,8 +32,9 @@ function ecart_type($arr)
 
 if ($_SESSION["role"] == "admin") {
 
-    $pdf = array();
-    $notation = array("", "Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait", "Moyenne", "Ecart-type");
+    $pdf_rep = array();
+    $pdf_stat = array();
+    $notation = array("", "Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait","Total");
     $matière = array("Maths", "Anglais", "Programmation", "Algorithmique", "Economie");
     $maths = array();
     $anglais = array();
@@ -64,7 +65,7 @@ if ($_SESSION["role"] == "admin") {
         }
 
     }
-
+    echo "<h2>Répartition (nombre d'étudiants) </h2>";
     echo "<div class=\"table-responsive-sm \"><table class=\"table-bordered table table-striped\"><thead class=\"thead-light\"><tr>";
     foreach ($notation as $avi) {
         echo "<th>" . $avi . "</th>";
@@ -72,7 +73,7 @@ if ($_SESSION["role"] == "admin") {
 
     echo "</tr></thead>";
 
-    array_push($pdf, $notation);
+    array_push($pdf_rep, $notation);
     echo "<tbody>";
     foreach ($avis as $edt) {
         $col = 0;
@@ -99,7 +100,7 @@ if ($_SESSION["role"] == "admin") {
         echo "<tr><th scope=\"row\">" . $matière[$compteur_matiere] . "</th>";
         array_push($pdf_parse, $matière[$compteur_matiere]);
         $compteur_matiere++;
-        for ($i = 0; $i <= count($notation) - 4; $i++) {
+        for ($i = 0; $i <= count($notation) - 3; $i++) {
             $count = 0;
             foreach ($ue as $item) {
                 if ($item == $i + 1) {
@@ -110,26 +111,55 @@ if ($_SESSION["role"] == "admin") {
             array_push($pdf_parse, $count);
             echo "<td>" . $count . "</td>";
         }
-        echo "<td>" . round(array_sum($ue) / count($ue), 2) . "</td>";
-        array_push($pdf_parse, round(array_sum($ue) / count($ue), 2));
-        array_push($moyenne, round(array_sum($ue) / count($ue), 2));
-        echo "<td>" . round(ecart_type($ue), 2) . "</td>";
-        array_push($ecart, round(ecart_type($ue), 2));
-        array_push($pdf_parse, round(ecart_type($ue), 2));
-        echo "</tr>";
-        array_push($pdf, $pdf_parse);
+        echo "<td>" . array_sum($pdf_parse) . "</td>";
+
+
+        array_push($pdf_parse, array_sum($pdf_parse));
+        array_push($pdf_rep, $pdf_parse);
     }
 
     echo "</tbody></table></div>";
 
-    if (count($votes) > 1) {
-        echo "<h3>Il y a " . count($votes) . " étudiants qui ont voté </h3>";
-    } else {
-        echo "<h3>Il y a 1 étudiant qui a voté </h3>";
+
+
+    echo "<h2>Statistiques</h2>";
+    echo "<div class=\"table-responsive-sm \"><table class=\"table-bordered table table-striped\"><thead class=\"thead-light\"><tr>";
+    echo "<th></th>";
+    echo "<th>Moyenne</th>";
+    echo "<th>Ecart-Type</th>";
+    echo "</tr></thead>";
+
+    echo "<tbody>";
+
+    $compteur_matiere = 0;
+    $pdf_parse = array("","Moyenne","Ecart-Type");
+    array_push($pdf_stat, $pdf_parse);
+
+    foreach ($matieres_notes as $ue) {
+        $pdf_parse = array();
+        echo "<tr><th scope=\"row\">" . $matière[$compteur_matiere] . "</th>";
+        array_push($pdf_parse, $matière[$compteur_matiere]);
+        $compteur_matiere++;
+
+        $moy = round(array_sum($ue) / count($ue), 2);
+        echo "<td>" . $moy . "</td>";
+        array_push($moyenne, $moy);
+        array_push($pdf_parse, $moy);
+
+        $ect = round(ecart_type($ue), 2);
+        echo "<td>" . $ect . "</td></tr>";
+        array_push($ecart, $ect);
+        array_push($pdf_parse, $ect);
+
+        array_push($pdf_stat, $pdf_parse);
     }
 
+    echo "</tbody></table></div>";
+
+
     if (isset($_REQUEST['submitPDF'])) {
-        $_SESSION["table"] = $pdf;
+        $_SESSION["table_rep"] = $pdf_rep;
+        $_SESSION["table_stat"] = $pdf_stat;
         header('Location: pdf/index.php');
     }
 
@@ -173,7 +203,7 @@ $_SESSION["graph_matiere"] = array("Très mécontent", "Mécontent", "Moyen", "S
 
 $_SESSION["graph_matiere_line"] = $matière;
 $_SESSION["graph_count_line"] = $moyenne;
-$_SESSION["graph_ec_line"] = $ecart
+$_SESSION["graph_ec_line"] = $ecart;
 ?>
         <?php include '../assets/graph/basic.php';?>
       </div>

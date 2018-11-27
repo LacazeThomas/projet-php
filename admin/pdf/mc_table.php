@@ -5,13 +5,14 @@ class PDF_MC_Table extends FPDF
 var $widths;
 var $aligns;
 function Header (){
-			$this->SetFont("Arial","b",10);
+			$this->SetFont("Arial","",10);
 			
 			$this->SetFillColor(0,0,255);
 			$this->Image('uvsq.jpg',162,5,35);
 			$this->Cell(2,10,date("d/m/Y"),0,0);
 			$this->Cell(100,10,'',0,1); 
 			$this->Cell(100,10,'',0,1); 
+			$this->SetFont("Arial","b",13);
 			$this->Cell(185,10,utf8_decode('Tableau récapitulatif de l\'avis des étudiants'),1,1,'C');
 			$this->Cell(100,10,'',0,1); 
 		}
@@ -51,8 +52,9 @@ function Row2($data)
 	//Dessine les cellules
 	for($i=0;$i<count($data);$i++)
 	{
+		$this->SetFillColor('144', '146', '150');
 		$w=$this->widths[$i];
-		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
+		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'C';
 		//Sauve la position courante
 		$x=$this->GetX();
 		$y=$this->GetY();
@@ -85,7 +87,7 @@ function Row($data)
 		else
 		$this->SetFillColor('255', '255', '255');
 		$w=$this->widths[$i];
-		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
+		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'C';
 		//Sauve la position courante
 		$x=$this->GetX();
 		$y=$this->GetY();
