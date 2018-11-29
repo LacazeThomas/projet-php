@@ -59,6 +59,16 @@ var myChart = new Chart(ctx, {
         display: false
 
     },
+    scales: {
+                yAxes: [
+                    {
+
+                         ticks: {
+                            beginAtZero: true,
+                      }, 
+                    }
+                ]
+            },
     tooltips: {
         callbacks: {
            label: function(tooltipItem) {
