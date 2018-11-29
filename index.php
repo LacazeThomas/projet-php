@@ -1,19 +1,8 @@
 <?php
-// **PREVENTING SESSION HIJACKING**
-// Prevents javascript XSS attacks aimed to steal the session ID
-ini_set('session.cookie_httponly', 1);
-
-// **PREVENTING SESSION FIXATION**
-// Session ID cannot be passed through URLs
-ini_set('session.use_only_cookies', 1);
-
-// Uses a secure connection (HTTPS) if possible
-ini_set('session.cookie_secure', 1);
-
 require_once 'panel_header.php';
 
 if (isset($_SESSION["role"])) {
-    header('Location: '.$_SESSION["role"]);
+    header('Location: /g9/'.$_SESSION["role"]);
 }
 
 function verif($file, $role){
@@ -32,7 +21,7 @@ function verif($file, $role){
                     $_SESSION["role"] = $role;
                     header('Location: '.$role.'/index.php');  
                 }else{
-                    $_SESSION["error"] = "Oups, votre identifiant ou mot de passe est incorrect";
+                    $_SESSION["error"] = "Oups, votre identifiant ou mot de passe est incorrect.";
                 }
             }
         }
@@ -45,14 +34,20 @@ verif("id-student.csv", "edt");
 
 ?>
 
+<h2>Bienvenue sur la platforme de vote de l'IUT</h2>
+<img src="/g9/assets/img/bandeau.png" class="rounded img-fluid" alt= ""/>
+<br/>
+<h5>Veuillez entrer vos identifiants</h5>
+
+<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 <?php
     if(isset($_SESSION["error"])){
-        echo $_SESSION["error"];
-        unset($_SESSION["error"]);
+        echo "<div class=\"alert alert-danger\" role=\"alert\">
+        ".$_SESSION["error"]."
+        </div>";
+        unset ($_SESSION["error"]);
     }
 ?>
-<h1>Veuillez vous connecter</h1>
-<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input name="id" type="text" class="form-control" placeholder="Identifiant" required autofocus>
             <input type="password" name="mdp"  class="form-control" placeholder="Mot de passe" required>
             <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Connexion</button>

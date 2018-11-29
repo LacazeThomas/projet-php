@@ -1,4 +1,9 @@
-.col.sortie_action{
-    padding-right: 0px !important;
-    padding-left: 0px !important;
+.container.full {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+.img-fluid{
+height: 50%;
+width: 70%;
+margin:20px;
 }
