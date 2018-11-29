@@ -45,7 +45,7 @@ if ($_SESSION["role"] == "admin") {
     $avis = array();
     $moyenne = array();
     $ecart = array();
-    if ($handle = opendir('../edt/votes')) {
+    if ($handle = opendir('/g9/edt/votes')) {
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != ".." && preg_match('/^.*\.(csv)$/i', $entry)) {
                 array_push($votes, $entry);
@@ -59,7 +59,7 @@ if ($_SESSION["role"] == "admin") {
     }
 
     foreach ($votes as $file_vote) {
-        $lines = file('../edt/votes/' . $file_vote);
+        $lines = file('/g9/edt/votes/' . $file_vote);
         foreach ($lines as $line) {
             $avis[] = str_getcsv($line);
         }
@@ -164,7 +164,7 @@ if ($_SESSION["role"] == "admin") {
     }
 
 } else {
-    header('Location: ../index.php');
+    header('Location: /g9/index.php');
 }
 
 ?>
@@ -205,7 +205,7 @@ $_SESSION["graph_matiere_line"] = $matière;
 $_SESSION["graph_count_line"] = $moyenne;
 $_SESSION["graph_ec_line"] = $ecart;
 ?>
-        <?php include '../assets/graph/basic.php';?>
+        <?php include '/g9/assets/graph/basic.php';?>
       </div>
     </div>
   </div>
@@ -221,10 +221,10 @@ $_SESSION["graph_ec_line"] = $ecart;
       <div class="card-body">
         <div class="row">
             <div class="col-sm">
-            <?php include '../assets/graph/line.php';?>
+            <?php include '/g9/assets/graph/line.php';?>
             </div>
             <div class="col-sm">
-            <?php include '../assets/graph/line_ec.php';?>
+            <?php include '/g9/assets/graph/line_ec.php';?>
             </div>
         </div>
     </div>
@@ -234,5 +234,5 @@ $_SESSION["graph_ec_line"] = $ecart;
 
 
 <?php
-require_once '../panel_footer.php';
+require_once '/g9/panel_footer.php';
 ?>

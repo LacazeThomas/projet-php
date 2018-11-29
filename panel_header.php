@@ -8,8 +8,8 @@ session_start();
 <html lang="fr">
 
 <head>
-    <script src="/assets/js/jquery-1.11.0.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/g9/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="/g9/assets/js/bootstrap.min.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,10 +20,10 @@ session_start();
 
     <!-- Bootstrap core CSS -->
 
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/sticky-footer-navbar.css" rel="stylesheet">
-    <link href="/assets/css/signin.css" rel="stylesheet">
-    <link href="/assets/css/custom.css" rel="stylesheet">
+    <link href="/g9/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/g9/assets/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/g9/assets/css/signin.css" rel="stylesheet">
+    <link href="/g9/assets/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -42,7 +42,7 @@ session_start();
 if (isset($_SESSION["role"])) {
                         echo"
                         <li class=\"nav-item\">
-                        <a href=\"../logout.php\" class=\"btn btn-outline-light my-2 my-sm-0\" role=\"button\" aria-disabled=\"true\">Déconnexion</a>
+                        <a href=\"/g9/logout.php\" class=\"btn btn-outline-light my-2 my-sm-0\" role=\"button\" aria-disabled=\"true\">Déconnexion</a>
                         </li>";
 }
 ?>

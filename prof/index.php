@@ -1,5 +1,5 @@
 <?php
-require_once '../panel_header.php';
+require_once '/g9/panel_header.php';
 
 if ($_SESSION["role"] == "prof") {
 
@@ -77,17 +77,17 @@ if ($_SESSION["role"] == "prof") {
 
     
 } else {
-    header('Location: ../');
+    header('Location: /g9');
 }
 echo "<br/>";
 ?>
 
 
 <div class="d-flex">
-  <?php include('../assets/graph/basic.php'); ?>
+  <?php include('/g9/assets/graph/basic.php'); ?>
 </div>
 
 
 <?php
-require_once '../panel_footer.php';
+require_once '/g9/panel_footer.php';
 ?>
