@@ -4,7 +4,7 @@ if (!isset($_SESSION["graph_count_line"]) or !isset($_SESSION["graph_matiere_lin
 }
 ?>
 
-<script src="/assets/graph/graph.js"></script>
+<script src="/g9/assets/graph/graph.js"></script>
 
 
 <div class="col-md-12">

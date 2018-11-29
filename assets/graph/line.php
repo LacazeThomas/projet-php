@@ -24,7 +24,7 @@ echo "var javascript_graph_ec_line = " . $js_graph_ec_line . ";\n";
 ?>
 </script>
 
-<script src="/assets/graph/graph.js"></script>
+<script src="/g9/assets/graph/graph.js"></script>
 
 <div class="col-md-12">
         <p>Moyenne</p>

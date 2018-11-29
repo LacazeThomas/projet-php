@@ -1,5 +1,5 @@
 <?php
-require_once '/g9/panel_header.php';
+require_once '../panel_header.php';
 
 
 
@@ -66,4 +66,4 @@ if ($_SESSION["role"] == "edt") {
 
 <p>Les votes sont annonymes, il est donc impossible aux professeurs ou administrateur de savoir qui à voté quoi.</p>
 <?php
-require_once '/g9/panel_footer.php';
+require_once '../panel_footer.php';

@@ -1,13 +1,13 @@
 <?php
-require_once '/g9/panel_header.php';
+require_once '../panel_header.php';
 
 if ($_SESSION["role"] == "prof") {
 
     $votes = array();
-    if ($handle = opendir('../edt/votes')) {
+    if ($handle = opendir('/home/g9/edt/votes')) {
 
         while (false !== ($entry = readdir($handle))) {
-            if ($entry != "." && $entry != "..") {
+            if ($entry != "." && $entry != ".." && preg_match('/^vote-e([0-9]{4})\.(csv)$/i', $entry)) {
                 array_push($votes, $entry);
             }
         }
@@ -16,7 +16,7 @@ if ($_SESSION["role"] == "prof") {
     }
     $avis = array();
     foreach ($votes as $file_vote) {
-        $lines = file('../edt/votes/' . $file_vote);
+        $lines = file('/home/g9/edt/votes/' . $file_vote);
         foreach ($lines as $line) {
             $avis[] = str_getcsv($line);
         }
@@ -84,10 +84,10 @@ echo "<br/>";
 
 
 <div class="d-flex">
-  <?php include('/g9/assets/graph/basic.php'); ?>
+  <?php include('../assets/graph/basic.php'); ?>
 </div>
 
 
 <?php
-require_once '/g9/panel_footer.php';
+require_once '../panel_footer.php';
 ?>

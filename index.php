@@ -2,7 +2,7 @@
 require_once 'panel_header.php';
 
 if (isset($_SESSION["role"])) {
-    header('Location: '.$_SESSION["role"]);
+    header('Location: /g9/'.$_SESSION["role"]);
 }
 
 function verif($file, $role){

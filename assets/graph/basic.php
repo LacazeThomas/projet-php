@@ -17,7 +17,7 @@ echo "var javascript_notation_array = " . $js_notation_array . ";\n";
 ?>
 </script>
 
-<script src="/assets/graph/graph.js"></script>
+<script src="/g9/assets/graph/graph.js"></script>
 
 <div class="col-md-12">
         <canvas id="myChart" style="height:20vh;width:40vw"></canvas>
