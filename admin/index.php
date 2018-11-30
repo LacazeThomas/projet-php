@@ -121,8 +121,9 @@ if ($_SESSION["role"] == "admin") {
     echo "</tbody></table></div>";
 
 
-
     echo "<h2>Statistiques</h2>";
+    echo "<div class=\"row\">
+    <div class=\"col-8\">";
     echo "<div class=\"table-responsive-sm \"><table class=\"table-bordered table table-striped\"><thead class=\"thead-light\"><tr>";
     echo "<th></th>";
     echo "<th>Moyenne</th>";
@@ -154,7 +155,7 @@ if ($_SESSION["role"] == "admin") {
         array_push($pdf_stat, $pdf_parse);
     }
 
-    echo "</tbody></table></div>";
+    echo "</tbody></table></div></div>";
 
 
     if (isset($_REQUEST['submitPDF'])) {
@@ -166,8 +167,22 @@ if ($_SESSION["role"] == "admin") {
 } else {
     header('Location: /g9/index.php');
 }
-
 ?>
+    <div class="col-4">
+        <div class="table-responsive-sm">
+            <table class="table-bordered table table-striped">
+            <thead class="thead-light"><tr><th colspan="2">Barème</th></tr></thead>
+                <tbody>
+                    <tr> <th>1</th><td> Très mécontent</td></tr>
+                    <tr><th>2</th><td> Mécontent</td></tr>
+                    <tr><th>3</th><td> Moyen</td></tr>
+                    <tr><th>4</th><td> Satisfait</td></tr>
+                    <tr><th>5</th><td>Très satisfait</td></tr>
+                <tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <form action="" method="post">
  <p><button type="submit" class="btn btn-primary" name="submitPDF" value="PDF">Générer le PDF</button></p>
 </form>
