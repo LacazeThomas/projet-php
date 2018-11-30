@@ -21,9 +21,9 @@ if ($_SESSION["role"] == "prof") {
             $avis[] = str_getcsv($line);
         }
     }
-	echo "<br/>";
+    echo "<br/>";
     echo "<h2>Voici les avis des étudiants pour votre matière (";
-	
+
     $prof_ue = (int) filter_var($_SESSION["id"], FILTER_SANITIZE_NUMBER_INT);
     switch ($prof_ue) {
         case 1:
@@ -43,7 +43,7 @@ if ($_SESSION["role"] == "prof") {
             break;
     }
     echo "</h2>";
-	echo "<br/>";
+    echo "<br/>";
 
     $notation = array("", "Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait");
     $temp = $notation;
@@ -55,38 +55,27 @@ if ($_SESSION["role"] == "prof") {
     foreach ($notation as $avi) {
         echo "<th>" . $avi . "</th>";
     }
-	
-	
-	echo"<th>Moyenne</th>";
-	
-	
-	echo"<th>Écart-type</th>";
-	
-	
-    echo"<th>Total</th>";
 
-	
+    echo "<th>Total</th>";
+
     echo "</tr></thead>";
     echo "<tbody>";
-    $nombre_votant = count($votes)-1;
+    $nombre_votant = count($votes) - 1;
     echo "<tr><th scope=\"row\">Répartion</th>";
-        for ($i = 0; $i < 5; $i++) {
-            $count = 0;
-            for ($y = 0; $y < $nombre_votant ; $y++) {
-                if ($avis[$y][$prof_ue - 1] == $i + 1) {
-                    $count++;
-                }
+    for ($i = 0; $i < 5; $i++) {
+        $count = 0;
+        for ($y = 0; $y < $nombre_votant; $y++) {
+            if ($avis[$y][$prof_ue - 1] == $i + 1) {
+                $count++;
             }
+        }
         echo "<td>" . $count . "</td>";
         array_push($graph_count, $count);
-        }
-    echo "<td>".$nombre_votant."</td>";
-	echo "<td>".round(array_sum($notation) / count($notation), 2)."</td>";
-	echo "<td>".$nombre_votant."</td>";
+    }
+    echo "<td>" . $nombre_votant . "</td>";
     $_SESSION["graph_count"] = $graph_count;
     echo "</tbody></table></div>";
 
-    
 } else {
     header('Location: /g9');
 }
@@ -95,7 +84,7 @@ echo "<br/>";
 
 
 <div class="d-flex">
-  <?php include('../assets/graph/basic.php'); ?>
+  <?php include '../assets/graph/basic.php';?>
 </div>
 
 
