@@ -164,7 +164,7 @@ if ($_SESSION["role"] == "admin") {
     }
 
 } else {
-    header('Location: /home/g9/index.php');
+    header('Location: /g9/index.php');
 }
 
 ?>
@@ -205,7 +205,7 @@ $_SESSION["graph_matiere_line"] = $matière;
 $_SESSION["graph_count_line"] = $moyenne;
 $_SESSION["graph_ec_line"] = $ecart;
 ?>
-        <?php include '/home/g9/assets/graph/basic.php';?>
+        <?php include '../assets/graph/basic.php';?>
       </div>
     </div>
   </div>
@@ -221,10 +221,10 @@ $_SESSION["graph_ec_line"] = $ecart;
       <div class="card-body">
         <div class="row">
             <div class="col-sm">
-            <?php include '/home/g9/assets/graph/line.php';?>
+            <?php include '../assets/graph/line.php';?>
             </div>
             <div class="col-sm">
-            <?php include '/home/g9/assets/graph/line_ec.php';?>
+            <?php include '../assets/graph/line_ec.php';?>
             </div>
         </div>
     </div>
@@ -234,5 +234,5 @@ $_SESSION["graph_ec_line"] = $ecart;
 
 
 <?php
-require_once '/home/g9/panel_footer.php';
+require_once '/g9/panel_footer.php';
 ?>
