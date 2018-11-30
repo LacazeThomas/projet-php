@@ -43,7 +43,7 @@ if ($_SESSION["role"] == "edt") {
         foreach ($tabue as $ue) {
 			echo "<div class='btn-group'>";
             echo "<tr><th scope='row'>" . $ue . "</th>";
-            echo "<td><select name=" . $ue . " class='btn btn-primary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+            echo "<td><select name=" . $ue . " class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
             print(' <div class="dropdown-menu">
 					<option class="dropdown-item" value="1">Très mécontent</option>
 					<option class="dropdown-item" value="2">Mécontent</option>
@@ -54,7 +54,7 @@ if ($_SESSION["role"] == "edt") {
 				</tr></div>');
         }
         print('
-				</tbody><tr><td colspan="2"><center><button class="btn btn-primary btn-lg" type="submit">Valider</button></center></tr></td>
+				</tbody><tr><td colspan="2"><center><button class="btn btn-lg" type="submit">Valider</button></center></tr></td>
 			</table>
 		</form>');
     }
