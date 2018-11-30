@@ -4,7 +4,7 @@ require_once '../panel_header.php';
 if ($_SESSION["role"] == "prof") {
 
     $votes = array();
-    if ($handle = opendir('/home/g9/edt/votes')) {
+    if ($handle = opendir('../edt/votes')) {
 
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != ".." && preg_match('/^vote-e([0-9]{4})\.(csv)$/i', $entry)) {
@@ -16,7 +16,7 @@ if ($_SESSION["role"] == "prof") {
     }
     $avis = array();
     foreach ($votes as $file_vote) {
-        $lines = file('/home/g9/edt/votes/' . $file_vote);
+        $lines = file('../edt/votes/' . $file_vote);
         foreach ($lines as $line) {
             $avis[] = str_getcsv($line);
         }
