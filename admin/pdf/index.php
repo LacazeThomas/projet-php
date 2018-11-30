@@ -39,5 +39,19 @@ foreach ($_SESSION["table_stat"] as $row) {
     }
 }
 
+$pdf->Cell(100,10,'',0,1); 
+$pdf->Cell(100,10,'',0,1); 
+$pdf->SetFont("Arial","b",13);
+$pdf->Cell(185,10,utf8_decode('Barème'),1,1,'C');
+$pdf->Cell(100,10,'',0,1); 
+
+$pdf->SetFont('Arial', '', 11);
+$pdf->Row(array("1","Très mécontent"));
+$pdf->Row(array("2","Mécontent"));
+$pdf->Row(array("3","Moyen"));
+$pdf->Row(array("4","Satisfait"));
+$pdf->Row(array("5","Très satisfait"));
+
+
 
 $pdf->Output();
