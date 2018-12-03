@@ -249,5 +249,5 @@ $_SESSION["graph_ec_line"] = $ecart;
 
 
 <?php
-require_once '/g9/panel_footer.php';
+require_once '../panel_footer.php';
 ?>
