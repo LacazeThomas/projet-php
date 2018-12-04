@@ -1,9 +1,3 @@
-<?php
-if (!isset($_SESSION["graph_count"]) or  !isset($_SESSION["graph_matiere"])){
-    header('Location: ../');
-}
-?>
-
 <script type='text/javascript'>
 <?php
 $count_array = $_SESSION["graph_count"];
