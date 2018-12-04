@@ -11,6 +11,9 @@ if ($_SESSION["role"] == "prof") {
                 array_push($votes, $entry);
             }
         }
+        if (empty($votes)) {
+            die("Aucun vote n'a été enregistré");
+        }
 
         closedir($handle);
     }
@@ -60,7 +63,7 @@ if ($_SESSION["role"] == "prof") {
 
     echo "</tr></thead>";
     echo "<tbody>";
-    $nombre_votant = count($votes) - 1;
+    $nombre_votant = count($votes);
     echo "<tr><th scope=\"row\">Répartion</th>";
     for ($i = 0; $i < 5; $i++) {
         $count = 0;

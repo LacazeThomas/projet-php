@@ -34,7 +34,7 @@ verif("id-student.csv", "edt");
 
 ?>
 
-<h2>Bienvenue sur la platforme de vote de l'IUT</h2>
+<h2>Bienvenue sur la plateforme de vote de l'IUT</h2>
 <img src="/g9/assets/img/bandeau.png" class="rounded img-fluid" alt= ""/>
 <br/>
 <h5>Veuillez entrer vos informations</h5>

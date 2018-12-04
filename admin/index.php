@@ -36,11 +36,6 @@ if ($_SESSION["role"] == "admin") {
     $pdf_stat = array();
     $notation = array("", "Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait","Total");
     $matière = array("Maths", "Anglais", "Programmation", "Algorithmique", "Economie");
-    $maths = array();
-    $anglais = array();
-    $prog = array();
-    $algo = array();
-    $eco = array();
     $votes = array();
     $avis = array();
     $moyenne = array();
@@ -73,6 +68,12 @@ if ($_SESSION["role"] == "admin") {
 
     echo "</tr></thead>";
 
+
+    $maths = array();
+    $anglais = array();
+    $prog = array();
+    $algo = array();
+    $eco = array();
     array_push($pdf_rep, $notation);
     echo "<tbody>";
     foreach ($avis as $edt) {
