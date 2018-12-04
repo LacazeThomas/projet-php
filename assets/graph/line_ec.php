@@ -1,6 +1,3 @@
-<script src="/g9/assets/graph/graph.js"></script>
-
-
 <div class="col-md-12">
         <p>Ecart-type</p>
         <canvas id="myChart_line_ec"></canvas>
