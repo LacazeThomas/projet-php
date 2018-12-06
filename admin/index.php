@@ -243,31 +243,31 @@ $_SESSION["graph_count_line"] = $moyenne;
 $_SESSION["graph_ec_line"] = $ecart;
 ?>
             <?php include '../assets/graph/basic.php';?>
+            </div>
         </div>
     </div>
-</div>
-<div class="card">
-    <div class="card-header" id="headingThree">
-        <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                aria-controls="collapseThree">
-                Informations complémentaires
-            </button>
-        </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm">
-                    <?php include '../assets/graph/line.php';?>
-                </div>
-                <div class="col-sm">
-                    <?php include '../assets/graph/line_ec.php';?>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                    aria-controls="collapseThree">
+                    Informations complémentaires
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <?php include '../assets/graph/line.php';?>
+                    </div>
+                    <div class="col-sm">
+                        <?php include '../assets/graph/line_ec.php';?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
