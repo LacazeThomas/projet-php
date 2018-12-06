@@ -1,25 +1,30 @@
 <?php
 require_once 'panel_header.php';
 
-if (isset($_SESSION["role"])) {
+if (isset($_SESSION["role"])) { //Redirection en fonction du rôle si la session est trouvée
     header('Location: /g9/'.$_SESSION["role"]);
 }
 
-function verif($file, $role){
-    $id = array();
+function verif($file, $role){ 
+    /* Fonction de vérification de l'utilisateur
+    file -> correspond au ficher ou se trouve les identifiants et mot de passe
+    role -> correspond au grade de l'utilisateur */
+
+    $id = array(); 
     $lines = file("file/".$file);
     foreach ($lines as $key => $value)
     {
         $id[$key] = str_getcsv($value);
-    }
+    } // On stocke les identifiants et mot de passe dans un tableau 2D
+    //
     
-    if(isset($_REQUEST['submit'])){
-        if($_POST['id'] && $_POST['mdp']){
-            foreach($id as $val){
-                if($_POST['id'] == $val[0] and $_POST['mdp'] == $val[1]){
-                    $_SESSION["id"] = $_POST["id"];
-                    $_SESSION["role"] = $role;
-                    header('Location: '.$role.'/index.php');  
+    if(isset($_REQUEST['submit'])){ 
+        if($_POST['id'] && $_POST['mdp']){ //Si les deux champs sont renseigner
+            foreach($id as $val){ //Pour chaque identifiant
+                if($_POST['id'] == $val[0] and $_POST['mdp'] == $val[1]){ //On test si le login et password est trouvé
+                    $_SESSION["id"] = $_POST["id"]; //On peut lui donner un id
+                    $_SESSION["role"] = $role; //Et un rôle
+                    header('Location: '.$role.'/');  //Puis on le redirige dans le dossier de son role
                 }else{
                     $_SESSION["error"] = "Oups, votre identifiant ou mot de passe est incorrect.";
                 }
