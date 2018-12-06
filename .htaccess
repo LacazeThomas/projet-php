@@ -13,3 +13,9 @@ ErrorDocument 403 /g9/
 Order allow,deny
 Deny from all
 </FilesMatch>
+
+#On refuse l'accès aux fichiers .php du dossier assets
+<If "%{REQUEST_URI} =~ m#^/g9/assets/.*\.(php)#">
+	Order allow,deny
+	Deny from all
+</If>
