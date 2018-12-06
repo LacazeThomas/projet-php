@@ -1,6 +1,5 @@
 <?php
-require_once '../panel_header.php';
-require 'pdf/mc_table.php';
+require_once '../panel_header.php'; 
 ?>
 <div id="accordion">
     <div class="card">
@@ -41,20 +40,21 @@ if ($_SESSION["role"] == "admin") {
     $avis = array();
     $moyenne = array();
     $ecart = array();
-    if ($handle = opendir('../edt/votes')) {
+    if ($handle = opendir('../edt/votes')) {  //On lit les votes et on les push tous dans le tableau $votes
+        //On fait attention aux fichiers présents avec un preg_match
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != ".." && preg_match('/^vote-e([0-9]{4})\.(csv)$/i', $entry)) {
                 array_push($votes, $entry);
             }
         }
         if (empty($votes)) {
-            die("Aucun vote n'a été enregistré");
+            die("Aucun vote n'a été enregistré");//Si il n'y a aucun vote on génére une erreur et on arrete l'affichage de la page
         }
 
         closedir($handle);
     }
 
-    foreach ($votes as $file_vote) {
+    foreach ($votes as $file_vote) {//On lit les fichiers un par un et on ajout les votes dans un tableau $avis
         $lines = file('../edt/votes/' . $file_vote);
         foreach ($lines as $line) {
             $avis[] = str_getcsv($line);
@@ -77,7 +77,7 @@ if ($_SESSION["role"] == "admin") {
     $eco = array();
     array_push($pdf_rep, $notation);
     echo "<tbody>";
-    foreach ($avis as $edt) {
+    foreach ($avis as $edt) { //On ajoute chaque avis dans la matiere qui correspond. Pour faciliter les opérations par la suite 
         $col = 0;
         foreach ($edt as $avi) {
             $col = $col + 1;
@@ -95,7 +95,7 @@ if ($_SESSION["role"] == "admin") {
             }
         }
     }
-    $matieres_notes = array($maths, $anglais, $prog, $algo, $eco);
+    $matieres_notes = array($maths, $anglais, $prog, $algo, $eco); //On crée un array 2d avec les avis des matieres pour facilier le parcours
     $compteur_matiere = 0;
     foreach ($matieres_notes as $ue) {
         $pdf_parse = array();
@@ -106,18 +106,18 @@ if ($_SESSION["role"] == "admin") {
             $count = 0;
             foreach ($ue as $item) {
                 if ($item == $i + 1) {
-                    $count++;
+                    $count++; //On compte le nombre de répétition du meme avis dans la meme matiere
                 }
 
             }
-            array_push($pdf_parse, $count);
-            echo "<td>" . $count . "</td>";
+            array_push($pdf_parse, $count); //On l'ajoute pour le pdf 
+            echo "<td>" . $count . "</td>"; //Et on l'affiche sur la page
         }
-        echo "<td>" . array_sum($pdf_parse) . "</td>";
+        echo "<td>" . array_sum($pdf_parse) . "</td>"; //On affiche le total de votant pour la matière
 
 
         array_push($pdf_parse, array_sum($pdf_parse));
-        array_push($pdf_rep, $pdf_parse);
+        array_push($pdf_rep, $pdf_parse); //On ajoute le parse dans le pdf pour former un tab 2D comme l'affichage en html
     }
 
     echo "</tbody></table></div>";
@@ -135,6 +135,7 @@ if ($_SESSION["role"] == "admin") {
     echo "<tbody>";
 
     $compteur_matiere = 0;
+    //On reproduit la meme chose que pour la répartiton avec pour la moyenne et l'écartype 
     $pdf_parse = array("","Moyenne","Ecart-Type");
     array_push($pdf_stat, $pdf_parse);
 
@@ -160,10 +161,10 @@ if ($_SESSION["role"] == "admin") {
     echo "</tbody></table></div></div>";
 
 
-    if (isset($_REQUEST['submitPDF'])) {
-        $_SESSION["table_rep"] = $pdf_rep;
-        $_SESSION["table_stat"] = $pdf_stat;
-        header('Location: pdf/index.php');
+    if (isset($_REQUEST['submitPDF'])) { //Si l'administrateur souhaite un pdf
+        $_SESSION["table_rep"] = $pdf_rep; //Array de la répartion des notes
+        $_SESSION["table_stat"] = $pdf_stat; //Array des statistiques (moyenne, ecartype)
+        header('Location: pdf/');
     }
 
 } else {
@@ -222,7 +223,7 @@ if ($_SESSION["role"] == "admin") {
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
         <div class="card-body">
             <?php
-$graph_count = array();
+$graph_count = array(); //Array pour stocker la totalité des avis tout UE confondu
 for ($i = 0; $i < 5; $i++) {
     $count = 0;
     for ($y = 0; $y < count($votes); $y++) {
@@ -233,7 +234,7 @@ for ($i = 0; $i < 5; $i++) {
 
         }
     }
-    array_push($graph_count, $count);
+    array_push($graph_count, $count); 
 }
 $_SESSION["graph_count"] = $graph_count;
 $_SESSION["graph_matiere"] = array("Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait");
