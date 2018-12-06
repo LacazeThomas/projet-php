@@ -36,16 +36,18 @@ session_start();
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <?php if(isset($_SESSION["role"])) : ?><!-- On affiche le bouton de déconnexion si l'utilisateur est connecté-->
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <?php if(isset($_SESSION["role"])) : ?><!-- On affiche le bouton de déconnexion si l'utilisateur est connecté-->
+                    
                     <li class="nav-item">
                         <a href="/g9/logout.php" class="btn btn-outline-light my-2 my-sm-0" role="button" aria-disabled="true">Déconnexion</a>
                     </li>
-                    <?php endif; ?>
+                    
                 </li>
             </ul>
         </div>
+        <?php endif; ?>
     </nav>
     <div class="container">
