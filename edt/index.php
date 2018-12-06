@@ -1,19 +1,21 @@
 <?php
 require_once '../panel_header.php';
 
-
-
+// Tableaux des matières et des notes
 $tabue = array("Mathématiques", "Anglais", "Programmation", "Algorithmique", "Economie");
 $tabnote = array("Très mécontent", "Mécontent", "Moyen", "Satisfait", "Très satisfait");
-if ($_SESSION["role"] == "edt") {
-	if (isset($_SESSION["error"])) {
+
+if ($_SESSION["role"] == "edt") { // Si l'étudiant est authentifié
+
+	if (isset($_SESSION["error"])) { // Si une erreur existe, on l'affiche et on la détruit.
 		echo "<div class=\"alert alert-danger\" role=\"alert\">
 			" . $_SESSION["error"] . "
 			</div>";
 		unset($_SESSION["error"]);
 	}
 	
-    $vote = "votes/vote-" . $_SESSION["id"] . ".csv";
+    $vote = "votes/vote-" . $_SESSION["id"] . ".csv"; // Lien du fichier de vote de l'étudiant
+	
     if (file_exists($vote)) { //Si l'étudiant a voté
         $row = 1;
         if (($handle = fopen($vote, "r")) !== false) {
@@ -33,14 +35,14 @@ if ($_SESSION["role"] == "edt") {
             }
             fclose($handle);
         }
-    } else {
+    } else { // Sinon, on affiche le formulaire de vote
         print('
 		<br/>
 		<h2 class="title">Formulaire de vote*</h2>
 		<form method="POST" action="writevote.php">
 		<br/>
 		<table class="table"><tbody>');
-        foreach ($tabue as $ue) {
+        foreach ($tabue as $ue) { // On ajoute un menu déroulant de votes par UE
 			echo "<div class='btn-group'>";
             echo "<tr><th scope='row'>" . $ue . "</th>";
             echo "<td><select name=" . $ue . " class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
@@ -59,8 +61,8 @@ if ($_SESSION["role"] == "edt") {
 		</form>');
     }
 
-} else {
-    header('Location: /g9/');
+} else { // Si l'utilisateur n'est pas un étudiant authentifié
+    header('Location: /g9/'); // On le redirige vers l'index
 }
 ?>
 
@@ -68,3 +70,4 @@ if ($_SESSION["role"] == "edt") {
     connaître l'identité des votants.</p>
 <?php
 require_once '../panel_footer.php';
+?>
