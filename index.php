@@ -1,5 +1,5 @@
 <?php
-require_once 'panel_header.php';
+require_once 'panel_header.php'; //On importe le header
 
 if (isset($_SESSION["role"])) { //Redirection en fonction du rôle si la session est trouvée
     header('Location: /g9/'.$_SESSION["role"]);
@@ -46,11 +46,12 @@ verif("id-student.csv", "edt");
 
 <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="post">
     <?php
+    //Si il y a des erreurs alors on les affiches
     if(isset($_SESSION["error"])){
         echo "<div class=\"alert alert-danger\" role=\"alert\">
         ".$_SESSION["error"]."
         </div>";
-        unset ($_SESSION["error"]);
+        unset ($_SESSION["error"]); //Puis une fois afficher on supprime l'erreur
     }
 ?>
     <input name="id" type="text" class="form-control" placeholder="Identifiant" required autofocus>
@@ -60,5 +61,5 @@ verif("id-student.csv", "edt");
 
 
 <?php
-require_once 'panel_footer.php';
+require_once 'panel_footer.php'; //On importe le footer
 ?>
