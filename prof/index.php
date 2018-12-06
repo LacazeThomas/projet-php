@@ -87,7 +87,8 @@ echo "<br/>";
 ?>
 
 
-<div class="d-flex"> <!-- On ajoute le graph qui utilise les session générées -->
+<div class="d-flex">
+    <!-- On ajoute le graph qui utilise les session générées -->
     <?php include '../assets/graph/basic.php';?>
 </div>
 
