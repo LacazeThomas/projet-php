@@ -69,7 +69,7 @@ if ($_SESSION["role"] == "prof") {
     for ($i = 0; $i < 5; $i++) { //on calcul pour chaque avi possible leur nombre d'itération
         $count = 0;
         for ($y = 0; $y < $nombre_votant; $y++) {
-            if ($avis[$y][$prof_ue - 1] == $i + 1) {
+            if ($avis[$y][$prof_ue-1] == $i + 1) {
                 $count++;
             }
         }
