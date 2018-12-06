@@ -167,7 +167,7 @@ if ($_SESSION["role"] == "admin") {
     }
 
 } else {
-    header('Location: /g9/index.php');
+    header('Location: /g9/');
 }
 ?>
                 <div class="col-4">

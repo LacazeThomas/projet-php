@@ -60,7 +60,7 @@ if ($_SESSION["role"] == "edt") {
     }
 
 } else {
-    header('Location: /g9/index.php');
+    header('Location: /g9/');
 }
 ?>
 
