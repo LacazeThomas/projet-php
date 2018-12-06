@@ -64,6 +64,7 @@ if ($_SESSION["role"] == "edt") {
 }
 ?>
 
-<p><strong>(*)</strong>Les votes sont anonymes, il est donc impossible pour les professeurs et administrateurs de connaître l'identité des votants.</p>
+<p><strong>(*)</strong>Les votes sont anonymes, il est donc impossible pour les professeurs et administrateurs de
+    connaître l'identité des votants.</p>
 <?php
 require_once '../panel_footer.php';

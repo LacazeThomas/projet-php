@@ -26,13 +26,13 @@ function verif($file, $role){
                     $_SESSION["role"] = $role; //Et un rôle
                     header('Location: '.$role.'/');  //Puis on le redirige dans le dossier de son role
                 }else{
-                    $_SESSION["error"] = "Oups, votre identifiant ou mot de passe est incorrect.";
+                    $_SESSION["error"] = "Oups, votre identifiant ou mot de passe est incorrect."; //Si le mot de passe est faux
                 }
             }
         }
     }
 }
-
+//Ficher de connecter et le rôle de chaqu'un
 verif("id-profs.csv", "prof");
 verif("id-admin.csv", "admin");
 verif("id-student.csv", "edt");
@@ -40,12 +40,12 @@ verif("id-student.csv", "edt");
 ?>
 
 <h2>Bienvenue sur la plateforme de vote de l'IUT</h2>
-<img src="/g9/assets/img/bandeau.png" class="rounded img-fluid" alt= ""/>
-<br/>
+<img src="/g9/assets/img/bandeau.png" class="rounded img-fluid" alt="" />
+<br />
 <h5>Veuillez entrer vos informations</h5>
 
-<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-<?php
+<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="post">
+    <?php
     if(isset($_SESSION["error"])){
         echo "<div class=\"alert alert-danger\" role=\"alert\">
         ".$_SESSION["error"]."
@@ -53,10 +53,10 @@ verif("id-student.csv", "edt");
         unset ($_SESSION["error"]);
     }
 ?>
-            <input name="id" type="text" class="form-control" placeholder="Identifiant" required autofocus>
-            <input type="password" name="mdp"  class="form-control" placeholder="Mot de passe" required>
-            <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Connexion</button>
-        </form>
+    <input name="id" type="text" class="form-control" placeholder="Identifiant" required autofocus>
+    <input type="password" name="mdp" class="form-control" placeholder="Mot de passe" required>
+    <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Connexion</button>
+</form>
 
 
 <?php
