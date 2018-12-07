@@ -91,6 +91,11 @@ echo "<br/>";
     <!-- On ajoute le graph qui utilise les session générées -->
     <?php include '../assets/graph/basic.php';?>
 </div>
+<hr>
+<div class="d-flex">
+    <!-- On ajoute le graph qui utilise les session générées -->
+    <?php include '../assets/graph/basic2.php';?>
+</div>
 
 
 <?php
