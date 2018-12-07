@@ -5,24 +5,35 @@ class PDF_MC_Table extends FPDF
 var $widths;
 var $aligns;
 function Header (){
+			//Defini la police du header
 			$this->SetFont("Arial","",10);
-			
+			//Defini les couleur du headers
 			$this->SetFillColor(0,0,255);
+			//affiche le logo de l'uvsq 
 			$this->Image('uvsq.jpg',162,5,35);
+			//Perme d'afficher et possitioner la date en temps réele
 			$this->Cell(2,10,date("d/m/Y"),0,0);
+			//Saut de ligne
 			$this->Cell(100,10,'',0,1); 
 			$this->Cell(100,10,'',0,1); 
+			//On redefini la taille de la police
 			$this->SetFont("Arial","b",13);
+			//On ecrit le titre et on le met en gras et en encadre
 			$this->Cell(185,10,utf8_decode('Tableau récapitulatif de l\'avis des étudiants'),1,1,'C');
 			$this->Cell(100,10,'',0,1); 
 		}
 		
 function Footer (){
+			//Defnie la police et la positions
+			
 			$this->SetFont("Arial","b",10);
 			$this->SetY(270);
 			$fill = 1;
 			
+			
+			//Permet dafficher le numeros de table en focntions de la pages et le nombre de feuille totalq
 			$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}','B',0,'C');
+			//On ecrit nos noms et on définis la police 
 			$this->SetFont("Arial","",7);
 			$this->Write(10, 'Thomas Lacaze, Jibril Zioui, Aurelien Brunet, Steven Kerautret, Noe Meric de Bellefon, Benjamin Ngogo, Projet PHP 2018 ');
 
@@ -52,6 +63,7 @@ function Row2($data)
 	//Dessine les cellules
 	for($i=0;$i<count($data);$i++)
 	{
+		
 		$this->SetFillColor('144', '146', '150');
 		$w=$this->widths[$i];
 		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'C';
@@ -83,9 +95,13 @@ function Row($data)
 	for($i=0;$i<count($data);$i++)
 	{
 		if($compteur==0)
+		//ici sont instanciers les cases de couleurs gris : ces a dire les cases exterieurs
 		$this->SetFillColor('144', '146', '150');
 		else
+		//ici sont instanciers les cases de couleurs blanches : ces a dire les cases intérieurs
 		$this->SetFillColor('255', '255', '255');
+		
+		//On aligne les case du tableau
 		$w=$this->widths[$i];
 		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'C';
 		//Sauve la position courante
