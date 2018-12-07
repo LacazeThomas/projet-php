@@ -1,9 +1,7 @@
 Options -Indexes 
-#On refuse l'index pour éviter de comprendre l'arborescence du projet
+#On refuse l'index pour Ã©viter de comprendre l'arborescence du projet
 
 
-ErrorDocument 500 /g9/
-ErrorDocument 500 /g9/
 ErrorDocument 500 /g9/
 ErrorDocument 404 /g9/
 ErrorDocument 401 /g9/
@@ -14,7 +12,7 @@ Order allow,deny
 Deny from all
 </FilesMatch>
 
-#On refuse l'accès aux fichiers .php du dossier assets
+#On refuse l'accÃ¨s aux fichiers .php du dossier assets
 <If "%{REQUEST_URI} =~ m#^/g9/assets/.*\.(php)#">
 	Order allow,deny
 	Deny from all
